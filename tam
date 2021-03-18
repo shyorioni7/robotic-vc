@@ -1,0 +1,25 @@
+startup_users = ["boomers", "gen-z", "gen-z", "baby"]
+
+def TAM(startup):
+    differential_factor = dict()
+    for value in startup:
+        if value not in differential_factor:
+            differential_factor[value] = 1
+        else:
+            differential_factor[value] += 1
+    return differential_factor
+
+def has_competition(current_market, incumbent):
+    competition = TAM(current_market)
+    for startup_user, count in competition.items():
+        if startup_user == incumbent and count > 0:
+            return True
+    return False
+   
+#Will update program to include nuances of market.
+incumbent = "gen-z"
+if has_competition(startup_users, incumbent):
+    print("Incumbent has competition, but a clearly definied TAM.")
+else:
+    print("Incumbent does not have a market.")
+        
